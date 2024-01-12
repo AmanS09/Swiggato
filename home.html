@@ -1,0 +1,155 @@
+<html>
+  <head>
+    <link rel="icon" type="image/svg+xml" href="images/logo1.jpg" />
+
+ <title>Swiggato</title>
+    <link rel="stylesheet" href="css/style1.css" />
+
+    
+
+  </head>
+
+  <body>
+    <div class="landing">
+      <div class="landing-interact">
+        <div class="navbar">
+          <div class="branding">
+            <div><img class="logo" src="images/logo1.jpg" /></div>
+            <div class="logo-title">Swiggato</div>
+          </div>
+          <div class="links">
+            <div>
+              <button class="nav-button login" onclick="window.location.href='login.html'">Login</button>
+
+            </div>
+            <div>
+             
+              <button class="nav-button sign"  onclick="window.location.href='signup.html'">Sign up</button>
+
+            </div>
+          </div>
+        </div>  
+        <div class="title">
+          <div id="typewriter" class="changing"></div>
+          <div class="sub-title">Order food from favourite resturants near you.</div>
+        </div>
+        <div class="search">
+          <select
+            id="selection"
+            onchange="updateSelection();"
+            class="search-bar"
+            type="text"
+            placeholder="Enter your delivery location"
+          >
+            <option value="" selected style="display: none"
+              >Select your location</option
+            >
+            <option value="11">Ahmedabad</option>
+            <option value="3">Bangalore</option>
+            <option value="7">Chennai</option>
+            <option value="1">Delhi</option>
+            <option value="6">Hyderabad</option>
+            <option value="2">Kolkata</option>
+            <option value="3">Mumbai</option>
+            <option value="5">Pune</option>
+          </select>
+          <a id="search" href="index.html"
+            ><button
+              disabled
+              id="search-button"
+              class="search-bar search-submit"
+              type="submit"
+            >
+              Find Food
+            </button></a
+          >
+          <script>
+            function updateSelection() {
+              console.log("lol");
+              if (document.getElementById("selection").value == "") {
+                document.getElementById("search-button").disabled = true;
+              } else {
+                document.getElementById("search-button").disabled = false;
+              }
+            }
+          </script>
+        </div>
+        <div class=" cities ">
+          <div class="cities-title">CITIES SERVED IN INDIA</div>
+          <div class="cities-sub-title">
+            Ahmedabad, Bangalore, Chennai, Delhi, Hyderabad, Kolkata, Mumbai, &
+            Pune
+          </div>
+        </div>
+      </div>
+      <div class="landing-images ">
+        <img class="landing-image " src="images/4.jpg" />
+      </div>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div><img class="feature-image" src="images/order.png" /></div>
+        <div class="feature-title">No Minimum Order</div>
+        <div class="feature-desc">
+          Order in for yourself or for the group, with no restrictions on order value
+        </div>
+      </div>
+      <div class="feature">
+        <div><img class="feature-image" src="images/ice-cream.png" /></div>
+        <div class="feature-title">Live Order Tracking</div>
+        <div class="feature-desc">
+          Know where your order is at all times, from the restaurant to your doorstep
+        </div>
+      </div>
+    </div>
+    <div class="mobile">
+      <div class="mob-1">
+        <img class="mobile-image" src="images/phone.png" />
+      </div>
+      <div class="mob-2">
+        <div class="changing">Restaurants in your pocket</div>
+        <div class="sub-title">
+          Order from your favorite restaurants & track on the go, with the all-new Swiggato app.
+
+        </div>
+        <div class="stores">
+          <img
+            class="store-image"
+            onClick="alertFunction()"
+            src="images/play.webp"
+          /><img class="store-image" src="images/iOS.webp" onClick="alertFunction()"/>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="credits">Made by Aman,Priyanshu,Gaurav,Akshay and Pranav | Inspired by Swiggy</div>
+    </div>
+
+    <script>
+      const alertFunction = () => {
+        window.alert("App is in development... or is it?");
+      };
+    </script>
+    <script src="js/core.js"></script>
+    <script type="text/javascript">
+      const instance = new Typewriter("#typewriter", {
+        strings: [
+          "Feeling hungry?",
+          "Unexpected guests?",
+          "Cooking gone wrong?",
+          "Game night?",
+          "Movie marathon?"
+        ],
+        autoStart: true,
+        loop: true
+      });
+    </script>
+    
+   
+
+
+
+    
+
+  </body>
+</html>

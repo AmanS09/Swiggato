@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form class="login-form">
+        <h2>LOGIN</h2>
+        <div class="gap">
+        <div class="form">
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email" placeholder="Your email address">
+       
+   
+         
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" placeholder="Your password">
+        </div>
+        </div>
+        <label id="error-text"></label> 
+        <button type="submit" id="submit">Submit</button>
+<p>New to Swiggato? <a href="#" onclick="window.location.href='signup.html'">Sign up now</a></p>
+    </form>
+    <style>
+        html,body{
+          margin:0;
+          padding:0;
+          height: 100%;
+          background:url(./images/back1.png) no-repeat;
+  background-position: center center;
+  background-size: cover;
+        }
+        *{
+          box-sizing: border-box;
+        }
+        h2{
+          margin:0;
+        }
+        
+        body{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: rgb(225, 12, 12);
+          padding: 32px;
+          font-family:Arial, Helvetica, sans-serif;
+        }
+      
+        .login-form {
+  border: 2px solid black;
+  padding: 32px;
+  color: aliceblue;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: fit-content;
+  width: 100%;
+  background: rgb(16, 16, 16);
+  background-color: rgba(0, 0, 0, 0.8);
+  gap: 70px;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: 5px;
+  width: 100%;
+  gap: 50px;
+   font-size: 20px;
+
+}
+
+label {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  
+  color: antiquewhite;
+}
+
+input {
+  border: 1px solid rgb(119, 95, 95);
+  font-size: 20px;
+  color: black;
+  width: 100%;
+  border-radius: 2px;
+  
+  padding: 8px 12px;
+  transition: 300ms;
+  outline: 2px transparent;
+  background-color: rgb(230, 221, 210);
+}
+
+input:focus {
+  outline: 2px solid rgb(181, 7, 152);
+}
+
+#submit {
+  padding: 12px 24px;
+  border: none;
+  background-color: rgb(237, 11, 11);
+  color: white;
+  width: 100%;
+  font-size: 24px;
+ 
+}
+
+@media (max-width: 500px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+
+  label {
+    width: 100%;
+  }
+}
+
+    </style>
+
+
+<script type="text/javascript"> 
+    const errorbox = document.getElementById("error-text") 
+    function showError(text) { 
+        errorbox.innerText = text; 
+    } 
+    function hideError() { 
+        errorbox.innerText = ""; 
+    } 
+
+    const form = document.forms[0]; 
+     
+ 
+    const emailInp = form.email; 
+
+    
+
+    function submit(){ 
+     
+        const email = emailInp.value.trim(); 
+       
+         
+        hideError() 
+       
+        if (email == null || email.match(/^[a-zA-Z0-9.]+@([a-zA-Z]{2,}\.)+[a-zA-Z]{2,4}$/gm) == null) { 
+            showError("Invalid email entered"); 
+            return; 
+        } 
+
+
+        window.open('index.html', '_blank');
+    } 
+
+    form.addEventListener("submit", e => { 
+        e.preventDefault(); 
+        submit(); 
+    }); 
+</script> 
+</body>
+</html>

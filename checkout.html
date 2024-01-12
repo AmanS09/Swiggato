@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+  <!-- Your HTML content goes here -->
+  <div class="bg-gray-100 py-8">
+    <div class="max-w-xl mx-auto bg-white rounded-lg shadow-md px-8 py-6">
+      <h2 class="text-2xl font-bold mb-4">Checkout</h2>
+      <div class="flex space-x-4 mb-4">
+        <div class="flex-1 text-center">
+          <div class="h-12 w-12 rounded-full border-2 flex items-center justify-center">
+            <span>1</span>
+          </div>
+          <p class="mt-2 font-medium">Contact Info</p>
+        </div>
+        <div class="flex-1 text-center">
+          <div class="h-12 w-12 rounded-full border-2 flex items-center justify-center">
+            <span>2</span>
+          </div>
+          <p class="mt-2 font-medium">Delivery Address</p>
+        </div>
+        <div class="flex-1 text-center">
+          <div class="h-12 w-12 rounded-full border-2 flex items-center justify-center">
+            <span>3</span>
+          </div>
+          <p class="mt-2 font-medium">Payment</p>
+        </div>
+      </div>
+      <!-- Step 1 content -->
+      <div id="step1" class="step-content">
+        <form onsubmit="handleNextStep(event)">
+          <div class="mb-4">
+            <label for="name" class="block font-medium mb-2">Name</label>
+            <input type="text" id="name" name="name" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50" required />
+          </div>
+          <div class="mb-4">
+            <label for="email" class="block font-medium mb-2">Email</label>
+            <input type="email" id="email" name="email" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring-green-500 focus:ring-opacity-50" required />
+          </div>
+          <div class="mb-4">
+            <label for="phone" class="block font-medium mb-2">Phone</label>
+            <input type="tel" id="phone" name="phone" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50" required />
+          </div>
+          <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Next</button>
+        </form>
+      </div>
+      <!-- Step 2 content -->
+      <div id="step2" class="step-content">
+        <form onsubmit="handleNextStep(event)">
+          <div class="mb-4">
+            <label for="address" class="block font-medium mb-2">Address</label>
+            <textarea id="address" name="address" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50" required></textarea>
+          </div>
+          <div class="mb-4">
+            <label for="landmark" class="block font-medium mb-2">Landmark</label>
+            <input type="text" id="landmark" name="landmark" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50" required />
+          </div>
+          <div class="flex mb-4">
+            <div class="flex-1 mr-4">
+              <label for="city" class="block font-medium mb-2">City</label>
+              <input type="text" id="city" name="city" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50" required />
+            </div>
+            <div class="flex-1">
+              <label for="state" class="block font-medium mb-2">State</label>
+              <input type="text" id="state" name="state" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50" required />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="pincode" class="block font-medium mb-2">Pincode</label>
+            <input type="text" id="pincode" name="pincode" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50" required />
+          </div>
+          <div class="flex justify-between">
+            <button type="button" onclick="handlePreviousStep()" class="bg-gray-200 text-gray-600 py-2 px-4 rounded hover:bg-gray-300">Previous</button>
+            <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Next</button>
+          </div>
+        </form>
+      </div>
+      <!-- Step 3 content -->
+<!-- ...Previous HTML content... -->
+<div id="step3" class="step-content">
+    <form onsubmit="handleSubmit(event)">
+      <div class="mb-4">
+        <label for="payment-method" class="block font-medium mb-2">Payment Method</label>
+        <select id="payment-method" name="paymentMethod" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50" required>
+          <option value="">-- Select Payment Method --</option>
+          <option value="credit-card">Credit Card</option>
+          <option value="debit-card">Debit Card</option>
+          <option value="upi">UPI</option>
+        </select>
+      </div>
+      <div id="credit-card-details" class="mb-4">
+        <h2 class="text-xl font-medium mb-2">Credit Card Details</h2>
+        <div class="mb-4">
+          <label for="card-number" class="block font-medium mb-2">Card Number</label>
+          <input type="text" id="card-number" name="cardNumber" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50" required />
+        </div>
+        <div class="mb-4">
+          <label for="expiry" class="block font-medium mb-2">Expiry Date</label>
+          <div class="flex">
+            <input type="text" id="expiry" name="expiry" placeholder="MM / YY" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 mr-4" required />
+            <input type="text" id="cvv" name="cvv" placeholder="CVV" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50" required />
+          </div>
+        </div>
+      </div>
+      <div id="debit-card-details" class="mb-4">
+        <h2 class="text-xl font-medium mb-2">Debit Card Details</h2>
+        <div class="mb-4">
+          <label for="card-number" class="block font-medium mb-2">Card Number</label>
+          <input type="text" id="card-number" name="cardNumber" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50" required />
+        </div>
+        <div class="mb-4">
+          <label for="expiry" class="block font-medium mb-2">Expiry Date</label>
+          <div class="flex">
+            <input type="text" id="expiry" name="expiry" placeholder="MM / YY" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 mr-4" required />
+            <input type="text" id="cvv" name="cvv" placeholder="CVV" class="w-full rounded border-gray-300 focus:border-green-500 focus:ring focus:ring-green-500 focus:ring" required />
+          </div>
+        </div>
+        <input type="hidden" name="_next" value="/" />
+        <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:ring focus:ring-green-500 focus:ring-opacity-50">Place Order</button>
+      </div>
+    </form>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>  

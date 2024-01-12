@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div class="cart-container" id="cartContainer">
+        <h1><b>Cart</b></h1>
+        <div class="items-container" id="itemsContainer">
+            <!-- Items will be added dynamically here -->
+        </div>
+        <div id="totalPriceSection">
+            <h1>Total Price: <span id="totalPrice">Rs0</span></h1>
+        </div>
+        <button class="payment-btn" id="paymentBtn" onclick="window.location.href='payment.html'">Pay</button>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cartContainer = document.getElementById("cartContainer");
+            const itemsContainer = document.getElementById("itemsContainer");
+            const totalPriceElement = document.getElementById("totalPrice");
+            const paymentBtn = document.getElementById("paymentBtn");
+            let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+            function renderCartItems() {
+                itemsContainer.innerHTML = "";
+                cartItems.forEach((item, index) => {
+                    const itemElement = document.createElement("div");
+                    itemElement.className = "cart-item";
+                    itemElement.innerHTML = `
+                        <img src="${item.imageUrl}" alt="${item.name}" class="item-image" />
+                        <div class="item-details">
+                            <h2><b style="color: green;">${item.name}</b></h2>
+                            <h2>Price: Rs${item.price}</h2>
+                            <div class="quantity-container">
+                                <div class="quantity-btn decrement">-</div>
+                                <span><h3 class="quantity" id="quantity-${index}">${item.quantity}</h3></span>
+                                <div class="quantity-btn increment">+</div>
+                            </div>
+                            <h2><b>Total: Rs${calculateTotalPrice(item)}</b></h2>
+                            <span class="delete-btn">Remove</span>
+                        </div>
+                    `;
+                    itemsContainer.appendChild(itemElement);
+                });
+                updateLocalStorage(); // Update the local storage and total price
+            }
+
+            function updateLocalStorage() {
+                localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                totalPriceElement.innerText = `Rs${calculateTotalPriceForCart()}`;
+            }
+
+            function calculateTotalPrice(item) {
+                const total = item.price * item.quantity;
+                return isNaN(total) ? 0 : total;
+            }
+
+            function calculateTotalPriceForCart() {
+                let totalPrice = 0;
+                cartItems.forEach((item) => {
+                    totalPrice += calculateTotalPrice(item);
+                });
+                return totalPrice;
+            }
+
+            function handleButtonClick(e) {
+                const targetClassList = e.target.classList;
+                if (targetClassList.contains('decrement')) {
+                    const index = parseInt(e.target.parentNode.parentNode.querySelector('.quantity').id.split('-')[1]);
+                    if (cartItems[index].quantity > 1) {
+                        cartItems[index].quantity -= 1;
+                        renderCartItems();
+                    }
+                } else if (targetClassList.contains('increment')) {
+                    const index = parseInt(e.target.parentNode.parentNode.querySelector('.quantity').id.split('-')[1]);
+                    cartItems[index].quantity += 1;
+                    renderCartItems();
+                }  else if (targetClassList.contains("delete-btn")) {
+      const index = parseInt(
+        e.target.parentNode.parentNode.querySelector(".quantity").id.split("-")[1]
+      );
+      const itemName = cartItems[index].name;
+      cartItems.splice(index, 1);
+      renderCartItems();
+      updateLocalStorage();
+      Swal.fire({
+        icon: "success",
+        title: `${itemName} removed from cart!`,
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
+            }
+
+            cartContainer.addEventListener('click', handleButtonClick);
+
+           
+
+            renderCartItems(); // Call the render function to display items
+        });
+    </script>
+</body>
+
+</html>

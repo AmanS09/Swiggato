@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form class="sign-up-form">
+        <div class="text">
+    <h2>SIGN UP</h2>
+        </div>
+    <div class="form">
+
+        <label for="nameinp">Name</label> 
+        <input type="text" name="nameinp" id="nameinp" placeholder="Your Name"> 
+     
+     <label for="DOB">DOB</label>
+     <input type="date" name="DOB" id="DOB" placeholder="09092002">
+         <label for="mobile">Mobile</label> 
+        <input type="tel" name="mobile" id="mobile" placeholder="1234567890"> 
+     
+     
+        <label for="email">Email</label> 
+        <input type="text" name="email" id="email" placeholder="your.email@domain.com"> 
+     
+        <label for="pwd">Password</label> 
+        <input type="password" name="pwd" id="pwd" placeholder="Enter password"> 
+     
+     
+        <label for="cpwd">Confirm Password</label> 
+        <input type="password" name="cpwd" id="cpwd" placeholder="Reenter password"> 
+    </div>
+    <label id="error-text"></label> 
+    <button type="submit" id="submit">Submit</button>
+    <p>Already have an account? <a href="#" onclick="window.location.href='login.html'">Log In</a></p>
+
+    </form>
+    <style>
+        html,body{
+          margin:0;
+          padding:0;
+          height: 100%;
+          background:url(./images/back1.png) no-repeat;
+  background-position: center center;
+  background-size: cover;
+        }
+        *{
+          box-sizing: border-box;
+        }
+        h2{
+          margin:0;
+        }
+        body{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: rgb(225, 12, 12);
+          padding: 32px;
+          font-family:Arial, Helvetica, sans-serif;
+        }
+    
+       
+        .sign-up-form {
+  border: 2px solid black;
+  padding: 32px;
+  color: aliceblue;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: fit-content;
+  width: 100%;
+  background: rgb(16, 16, 16);
+background-color: rgba(0, 0, 0, 0.8);
+gap: 70px;
+}
+    
+        .form{
+          display: grid;
+          grid-template-columns: min-content 1fr;
+          gap: 12px;
+          width: 100%;
+          font-size: 20px;
+        }
+        label{
+          width: max-content;
+          display: flex;
+          align-items: center;
+          color: antiquewhite;
+    
+        }
+        input{
+          border: 1px solid rgb(119, 95, 95);
+          font-size: 20px;
+          color: black;
+          width: 100%;
+          border-radius: 2px;
+          padding: 8px 12px;
+          transition: 300ms;
+          outline: 2px transparent;
+          background-color: rgb(230, 221, 210);
+        }
+        input:focus{
+          outline: 2px solid rgb(181, 7, 152);
+        }
+        #submit{
+          padding:12px 24px;
+          border:none;
+          background-color: rgb(237, 11, 11);
+          color: white;
+          width: 100%;
+          font-size: 24px;
+        }
+@media (max-width: 500px) { 
+            .form { 
+                grid-template-columns: 1fr; 
+            } 
+ 
+            label { 
+                width: 100%; 
+            } 
+        } 
+
+    </style>
+
+<script type="text/javascript"> 
+    const errorbox = document.getElementById("error-text") 
+    function showError(text) { 
+        errorbox.innerText = text; 
+    } 
+    function hideError() { 
+        errorbox.innerText = ""; 
+    } 
+
+    const form = document.forms[0]; 
+     
+    const nameInp = form.nameinp; 
+    const mobInp = form.mobile; 
+    const emailInp = form.email; 
+    const pwdInp = form.pwd; 
+    const cpwdInp = form.cpwd; 
+
+    function submit(){ 
+        const text = nameInp.value.trim(); 
+        const mob = mobInp.value.trim(); 
+        const email = emailInp.value.trim(); 
+        const pwd = pwdInp.value.trim(); 
+        const cpwd = cpwdInp.value.trim(); 
+         
+        hideError() 
+        if (text == null || text.length < 3) { 
+            showError("Name should at least be 3 characters long"); 
+            return; 
+        } 
+        if (mob == null || mob.match(/^[\d +-]{10,}$/gm) == null){ 
+            showError("Invalid mobile number"); 
+            return; 
+        } 
+        if (email == null || email.match(/^[a-zA-Z0-9.]+@([a-zA-Z]{2,}\.)+[a-zA-Z]{2,4}$/gm) == null) { 
+            showError("Invalid email entered"); 
+            return; 
+        } 
+        if (pwd == null || pwd.length < 8){ 
+            showError("Password should be at least 8 characters"); 
+            return; 
+        } 
+        if (cpwd != pwd) { 
+            showError("Confirm Password should match Password"); 
+            return; 
+        } 
+
+       
+        window.open('login.html', '_blank');
+    } 
+
+    form.addEventListener("submit", e => { 
+        e.preventDefault(); 
+        submit(); 
+        
+    }); 
+</script> 
+</body>
+</html>
