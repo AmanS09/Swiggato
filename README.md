@@ -42,5 +42,6 @@ The project incorporates various technologies to ensure stability and user-frien
 * PAYMENT
  ![Screenshot (1237)](https://github.com/AmanS09/Swiggato/assets/123250285/e3c9342b-3bb3-4094-9b9f-ecbe69d1fd8f)
 
- ![Screenshot (1239)](https://github.com/AmanS09/Swiggato/assets/123250285/b213914a-306a-4f14-abe5-4e2e08f8609f)
+ ![Screenshot (1239)](https://github.com/AmanS09/Swiggato/assets/123250285/87fd0b15-adfa-4694-944b-50e89c19d2fa)
+
 
