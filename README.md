@@ -1,5 +1,5 @@
 
-# [live site](https://amans09.github.io/Swiggato/)
+# [live site](https://swiggatoo.netlify.app/)
 
 
 # Swiggato - Food Delivery Platform
